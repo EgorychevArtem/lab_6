@@ -51,21 +51,18 @@ public class AnonServer {
         return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
-                {
-                    try {
-                        return Get(createServerRequest(new String(zoo.getData(z,false,null)), url, count));
-                    } catch (KeeperException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                })
+                        Get(createServerRequest(getServUrl(z), url, count))
+                        )
                 .handle( (result, ex) -> {
                     if (ex instanceof ConnectException){
                         storage.tell(new DeleteMessage(z), ActorRef.noSender());
                     }
                 })
 
+    }
+
+    private Response getServUrl(String znode) {
+        return new String(zoo.getData(znode, false, null));
     }
 
     public CompletionStage<Response> Get(Request req){
