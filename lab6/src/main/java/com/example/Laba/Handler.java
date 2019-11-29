@@ -15,5 +15,7 @@ public class Handler {
     }
 
     public void createServer(String name, String host, int port) {
+        String Serverpath = zoo.create(path + "/" + name,
+                (host + ":" + port).getBytes(),);
     }
 }
