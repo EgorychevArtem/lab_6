@@ -1,10 +1,7 @@
 package com.example.Laba;
 
 import akka.actor.ActorRef;
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.*;
 
 import java.util.logging.Logger;
 
@@ -18,7 +15,13 @@ public class Handler {
         this.zoo = zoo;
         this.storage = storage;
         this.path = path;
+
     }
+
+    public void checkChildrenCallback(WatchedEvent e){
+
+    }
+
 
     public void createServer(String name, String host, int port) throws Exception{
         String Serverpath = zoo.create(
