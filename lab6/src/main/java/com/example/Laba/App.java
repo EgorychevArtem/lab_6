@@ -29,6 +29,6 @@ public class App {
         ActorRef storage = system.actorOf(Props.create(Storage.class));
 
         Handler handler = new Handler(zoo, storage, "/servers");
-        handler.createServer("localhost" + port);
+        handler.createServer("localhost" + port, host, port);
     }
 }
