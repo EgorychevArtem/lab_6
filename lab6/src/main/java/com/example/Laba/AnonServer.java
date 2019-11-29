@@ -20,7 +20,7 @@ public class AnonServer {
 
     public Route createRoute(){
         return route(
-                get(() -> parametr("url", url ->
+                get(() -> parameter("url", url ->
                         parameter()
                                 )
                         )
