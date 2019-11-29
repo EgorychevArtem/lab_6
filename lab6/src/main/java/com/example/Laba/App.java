@@ -43,7 +43,7 @@ public class App {
         handler.createServer("localhost" + port, host, port);
 
         AnonServer server = new AnonServer(storage, httpClient, zoo);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = AnonServer.createRoute().flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.createRoute().flow(system, materializer);
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost(host, port),
