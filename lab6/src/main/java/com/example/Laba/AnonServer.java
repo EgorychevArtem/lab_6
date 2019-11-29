@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 import static akka.http.javadsl.server.Directives.*;
 
 public class AnonServer {
+    private static String URL = "url";
+    private static String COUNT = "count";
     static AsyncHttpClient http;
     static ActorRef storage;
     static ZooKeeper zoo;
@@ -29,8 +31,8 @@ public class AnonServer {
 
     public static Route createRoute(){
         return route(
-                get(() -> parameter("url", url ->
-                        parameter("count", count ->
+                get(() -> parameter(URL, url ->
+                        parameter(COUNT, count ->
                                 handleGetWithUrlCount(url, Integer.parseInt(count)))
                                 )
                         )
