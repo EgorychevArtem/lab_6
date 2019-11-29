@@ -16,6 +16,9 @@ public class Storage extends AbstractActor {
     @Override
     public Receive createReceive(){
         return receiveBuilder()
+                .match(PutMessage.class, m ->{
+                    log.
+                })
 
     }
 }
