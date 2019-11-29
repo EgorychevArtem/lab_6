@@ -52,8 +52,7 @@ public class AnonServer {
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
                         Get(createServerRequest(getServUrl(z), url, count))
-                .handle())
-                })
+                .handle( (result, ex) ->  ));
 
     }
 
