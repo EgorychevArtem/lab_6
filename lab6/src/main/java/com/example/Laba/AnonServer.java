@@ -57,7 +57,9 @@ public class AnonServer {
     }
 
     private Response BadDiretion(Response result, Throwable ex, String z) {
-        if ()
+        if (ex instanceof ConnectException){
+            storage.tell(new DeleteMessage(z), ActorRef.noSender());
+        }
     }
 
     private String getServUrl(String znode) {
