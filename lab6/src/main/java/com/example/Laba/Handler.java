@@ -9,6 +9,7 @@ import org.apache.zookeeper.ZooKeeper;
 import java.util.logging.Logger;
 
 public class Handler {
+    static final Logger log = Logger.getLogger(Handler.class.getName());
     ZooKeeper zoo;
     String path;
     ActorRef storage;
