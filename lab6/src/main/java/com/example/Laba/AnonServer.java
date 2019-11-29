@@ -61,11 +61,11 @@ public class AnonServer {
 
     }
 
-    private Response getServUrl(String znode) {
+    private String getServUrl(String znode) {
         try {
             return new String(zoo.getData(znode, false, null));
         } catch (KeeperException | InterruptedException e){
-            
+            throw new RuntimeException(e);
         }
     }
 
