@@ -1,6 +1,8 @@
 package com.example.Laba;
 
 import akka.actor.ActorRef;
+import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
 public class Handler {
@@ -16,6 +18,8 @@ public class Handler {
 
     public void createServer(String name, String host, int port) {
         String Serverpath = zoo.create(path + "/" + name,
-                (host + ":" + port).getBytes(),);
+                (host + ":" + port).getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.EPHEMERAL);
     }
 }
