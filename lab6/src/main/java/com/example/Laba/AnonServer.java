@@ -37,11 +37,11 @@ public class AnonServer {
         if (count == 0){
             result = Get(http.prepareGet(url).build());
         } else{
-            result = Redirect();
+            result = Redirect(url, count--);
         }
     }
 
-    public CompletionStage<Response> Redirect(){
+    public CompletionStage<Response> Redirect(String url, int count){
         
     }
 
