@@ -20,7 +20,7 @@ public class Handler {
         this.path = path;
     }
 
-    public void createServer(String name, String host, int port) throws KeeperException, InterruptedException {
+    public void createServer(String name, String host, int port) throws Exception{
         String Serverpath = zoo.create(
                 path + "/" + name,
                 (host + ":" + port).getBytes(),
