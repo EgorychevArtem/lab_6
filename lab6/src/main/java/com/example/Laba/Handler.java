@@ -20,7 +20,8 @@ public class Handler {
 
     public void checkChildrenCallback(WatchedEvent e){
         try{
-            this.storage.tell(new PutMessage());
+            this.storage.tell(new PutMessage(zoo.getChildren(path, this::checkChildrenCallback).stream()
+            .map(s -> path + "/" + s)));
         }catch ()
     }
 
