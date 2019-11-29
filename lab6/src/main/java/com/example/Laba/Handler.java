@@ -16,7 +16,7 @@ public class Handler {
         this.zoo = zoo;
         this.storage = storage;
         this.path = path;
-
+        checkChildrenCallback(null);
     }
 
     public void checkChildrenCallback(WatchedEvent e){
