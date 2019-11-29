@@ -52,8 +52,12 @@ public class AnonServer {
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
                         Get(createServerRequest(getServUrl(z), url, count))
-                .handle( (result, ex) ->  ));
+                .handle( (result, ex) ->  BadDiretion(result, ex, z)));
 
+    }
+
+    private Response BadDiretion(Response result, Throwable ex, String z) {
+        if ()
     }
 
     private String getServUrl(String znode) {
