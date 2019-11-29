@@ -14,6 +14,6 @@ public class Handler {
         this.path = path;
     }
 
-    public void createServer(String s, String host, int port) {
+    public void createServer(String name, String host, int port) {
     }
 }
