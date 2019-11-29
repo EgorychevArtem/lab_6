@@ -24,7 +24,9 @@ public class Handler {
             this.storage.tell(new PutMessage(zoo.getChildren(path, this::checkChildrenCallback).stream()
             .map(s -> path + "/" + s)
             .collect(Collectors.toList())));
-        }catch ()
+        }catch (KeeperException el){
+            throw new RuntimeException(el);
+        }
     }
 
 
