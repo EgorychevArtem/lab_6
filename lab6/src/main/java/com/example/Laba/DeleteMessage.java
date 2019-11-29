@@ -6,4 +6,8 @@ public class DeleteMessage {
     public DeleteMessage(String server){
         this.server = server;
     }
+
+    public String getServer() {
+        return server;
+    }
 }
