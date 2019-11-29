@@ -17,8 +17,8 @@ import java.util.regex.Pattern;
 import static akka.http.javadsl.server.Directives.*;
 
 public class AnonServer {
-    AsyncHttpClient http;
-    ActorRef storage;
+    static AsyncHttpClient http;
+    static ActorRef storage;
     ZooKeeper zoo;
 
     public AnonServer(ActorRef storage, AsyncHttpClient httpClient, ZooKeeper zoo) {
@@ -27,7 +27,7 @@ public class AnonServer {
         this.zoo = zoo;
     }
 
-    public Route createRoute(){
+    public static Route createRoute(){
         return route(
                 get(() -> parameter("url", url ->
                         parameter("count", count ->
@@ -37,7 +37,7 @@ public class AnonServer {
         );
     }
 
-    public Route handleGetWithUrlCount(String url, int count){
+    public static Route handleGetWithUrlCount(String url, int count){
         CompletionStage<Response> result;
         if (count == 0){
             result = Get(http.prepareGet(url).build());
@@ -47,7 +47,7 @@ public class AnonServer {
         return completeOKWithFutureString(result.thenApply(Response::getResponseBody));
     }
 
-    public CompletionStage<Response> Redirect(String url, int count){
+    public static CompletionStage<Response> Redirect(String url, int count){
         return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
@@ -56,14 +56,14 @@ public class AnonServer {
 
     }
 
-    private Response BadDiretion(Response result, Throwable ex, String z) {
+    private static Response BadDiretion(Response result, Throwable ex, String z) {
         if (ex instanceof ConnectException){
             storage.tell(new DeleteMessage(z), ActorRef.noSender());
         }
         return result;
     }
 
-    private String getServUrl(String znode) {
+    private static String getServUrl(String znode) {
         try {
             return new String(zoo.getData(znode, false, null));
         } catch (KeeperException | InterruptedException e){
@@ -71,11 +71,11 @@ public class AnonServer {
         }
     }
 
-    public CompletionStage<Response> Get(Request req){
+    public static CompletionStage<Response> Get(Request req){
         return http.executeRequest(req).toCompletableFuture();
     }
 
-    public Request createServerRequest(String servurl, String url, int count){
+    public static Request createServerRequest(String servurl, String url, int count){
         return http.prepareGet(servurl).addQueryParam("url", url)
                 .addQueryParam("count", Integer.toString(count)).build();
     }
