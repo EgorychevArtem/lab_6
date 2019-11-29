@@ -35,7 +35,7 @@ public class AnonServer {
     public Route handleGetWithUrlCount(String url, int count){
         CompletionStage<Response> result;
         if (count == 0){
-            result =
+            result = Get(http.prepareGet(url).build());
         }
     }
 
