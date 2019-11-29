@@ -3,6 +3,7 @@ package com.example.Laba;
 import akka.actor.ActorRef;
 import akka.http.javadsl.server.Route;
 import akka.pattern.Patterns;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
@@ -48,8 +49,17 @@ public class AnonServer {
         return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
-                        Get(createServerRequest(new String(zoo.getData(z,false,null)), url, count)))
-                
+                {
+                    try {
+                        return Get(createServerRequest(new String(zoo.getData(z,false,null)), url, count));
+                    } catch (KeeperException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                })
+                .
+
     }
 
     public CompletionStage<Response> Get(Request req){
