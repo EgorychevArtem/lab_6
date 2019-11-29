@@ -41,7 +41,7 @@ public class AnonServer {
 
 
     public CompletionStage<Response> Get(Request req){
-        
+        return http.executeRequest(req).toCompletableFuture();
     }
 
 }
