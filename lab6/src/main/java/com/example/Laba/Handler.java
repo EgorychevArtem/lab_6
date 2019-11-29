@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class Handler {
     static final Logger log = Logger.getLogger(Handler.class.getName());
-    ZooKeeper zoo;
-    String path;
+    static ZooKeeper zoo;
+    static String path;
     ActorRef storage;
 
     Handler(ZooKeeper zoo, ActorRef storage, String path){
@@ -31,7 +31,7 @@ public class Handler {
         }
     }
 
-    public void removeAllWatches() throws Exception {
+    public static void removeAllWatches() throws Exception {
         zoo.removeAllWatches(path, Watcher.WatcherType.Any, true);
     }
 

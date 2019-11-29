@@ -52,7 +52,6 @@ public class App {
 
         httpClient.close();
         Handler.removeAllWatches();
-        //zoo.removeAllWatches();
         zoo.close();
         binding
                 .thenCompose(ServerBinding::unbind)
