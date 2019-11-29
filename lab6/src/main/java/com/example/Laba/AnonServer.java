@@ -40,7 +40,7 @@ public class AnonServer {
     public static Route handleGetWithUrlCount(String url, int count){
         CompletionStage<Response> result;
         if (count == 0){
-            result = Get(http.prepareGet(url).build());
+            result = fetch(http.prepareGet(url).build());
         } else{
             result = Redirect(url, count--);
         }
@@ -51,7 +51,7 @@ public class AnonServer {
         return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
-                        Get(createServerRequest(getServUrl(z), url, count))
+                        fetch(createServerRequest(getServUrl(z), url, count))
                 .handle( (result, ex) ->  BadDiretion(result, ex, z)));
 
     }
@@ -71,7 +71,7 @@ public class AnonServer {
         }
     }
 
-    public static CompletionStage<Response> Get(Request req){
+    public static CompletionStage<Response> fetch(Request req){
         return http.executeRequest(req).toCompletableFuture();
     }
 
