@@ -23,9 +23,11 @@ public class Handler {
         try{
             this.storage.tell(new PutMessage(zoo.getChildren(path, this::checkChildrenCallback).stream()
             .map(s -> path + "/" + s)
-            .collect(Collectors.toList())));
+            .collect(Collectors.toList())), ActorRef.noSender());
         }catch (KeeperException el){
             throw new RuntimeException(el);
+        } catch (InterruptedException e1){
+            throw new RuntimeException(e1);
         }
     }
 
