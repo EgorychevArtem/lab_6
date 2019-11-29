@@ -17,7 +17,7 @@ import static org.asynchttpclient.Dsl.asyncHttpClient;
 public class App {
     static Logger log = Logger.getLogger(App.class.getName());
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         String host = args[0];
         int port = Integer.parseInt(args[1]);
         final ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, e -> log.info(e.toString()));
