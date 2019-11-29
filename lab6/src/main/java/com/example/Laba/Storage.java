@@ -1,5 +1,6 @@
 package com.example.Laba;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -8,6 +9,6 @@ public class Storage {
     List<String> storage;
 
     Storage(){
-       
+        this.storage = new ArrayList<>();
     }
 }
