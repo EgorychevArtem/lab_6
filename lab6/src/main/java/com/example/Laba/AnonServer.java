@@ -60,6 +60,7 @@ public class AnonServer {
         if (ex instanceof ConnectException){
             storage.tell(new DeleteMessage(z), ActorRef.noSender());
         }
+        return result;
     }
 
     private String getServUrl(String znode) {
