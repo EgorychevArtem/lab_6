@@ -21,7 +21,7 @@ public class AnonServer {
     public Route createRoute(){
         return route(
                 get(() -> parameter("url", url ->
-                        parameter()
+                        parameter("count", count - >)
                                 )
                         )
         )
