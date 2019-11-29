@@ -78,7 +78,7 @@ public class AnonServer {
     }
 
     public static Request createServerRequest(String servurl, String url, int count){
-        return http.prepareGet(servurl).addQueryParam("url", url)
-                .addQueryParam("count", Integer.toString(count)).build();
+        return http.prepareGet(servurl).addQueryParam(URL, url)
+                .addQueryParam(COUNT, Integer.toString(count)).build();
     }
 }
