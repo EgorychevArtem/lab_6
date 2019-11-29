@@ -30,5 +30,7 @@ public class App {
 
         Handler handler = new Handler(zoo, storage, "/servers");
         handler.createServer("localhost" + port, host, port);
+
+        
     }
 }
