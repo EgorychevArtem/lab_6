@@ -4,6 +4,7 @@ import akka.actor.ActorRef;
 import org.apache.zookeeper.*;
 
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Handler {
     static final Logger log = Logger.getLogger(Handler.class.getName());
@@ -21,7 +22,8 @@ public class Handler {
     public void checkChildrenCallback(WatchedEvent e){
         try{
             this.storage.tell(new PutMessage(zoo.getChildren(path, this::checkChildrenCallback).stream()
-            .map(s -> path + "/" + s)));
+            .map(s -> path + "/" + s)
+            .collect(Collectors.toList())));
         }catch ()
     }
 
