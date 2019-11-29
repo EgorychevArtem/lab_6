@@ -47,6 +47,7 @@ public class AnonServer {
     public CompletionStage<Response> Redirect(String url, int count){
         return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnMessage)o).server)
+                .thenCompose()
     }
 
     public CompletionStage<Response> Get(Request req){
