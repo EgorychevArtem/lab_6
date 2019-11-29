@@ -25,6 +25,10 @@ public class App {
     static Logger log = Logger.getLogger(App.class.getName());
 
     public static void main(String[] args) throws Exception {
+        if (args.length != 2) {
+            System.err.println("Usage: Anonymizer <host> <port>");
+            System.exit(-1);
+        }
         String host = args[0];
         int port = Integer.parseInt(args[1]);
         final ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, e -> log.info(e.toString()));
