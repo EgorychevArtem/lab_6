@@ -57,6 +57,6 @@ public class AnonServer {
 
     public Request createServerRequest(String servurl, String url, int count){
         return http.prepareGet(servurl).addQueryParam("url", url)
-                .addQueryParam("count", count).build();
+                .addQueryParam("count", Integer.toString(count)).build();
     }
 }
