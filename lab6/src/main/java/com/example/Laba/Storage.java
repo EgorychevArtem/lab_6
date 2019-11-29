@@ -29,7 +29,7 @@ public class Storage extends AbstractActor {
                     );
                 })
                 .match(DeleteMessage.class, m->{
-
+                    this.storage.remove(m.server);
                 })
                 .build();
 
