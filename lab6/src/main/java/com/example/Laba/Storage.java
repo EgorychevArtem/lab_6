@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import akka.actor.AbstractActor;
-public class Storage {
+public class Storage extends AbstractActor {
     Random random = new Random();
     List<String> storage;
 
@@ -13,7 +13,8 @@ public class Storage {
         this.storage = new ArrayList<>();
     }
 
-    public AbstractActor.Receive createReceive(){
-        return createReceive()
+    @Override
+    public Receive createReceive(){
+
     }
 }
