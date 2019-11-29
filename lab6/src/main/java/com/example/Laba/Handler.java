@@ -6,6 +6,8 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
+import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
+
 public class Handler {
     ZooKeeper zoo;
     String path;
@@ -23,5 +25,6 @@ public class Handler {
                 (host + ":" + port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL);
+        log.info();
     }
 }
