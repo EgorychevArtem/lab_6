@@ -2,12 +2,15 @@ package com.example.Laba;
 
 import akka.actor.ActorRef;
 import akka.http.javadsl.server.Route;
+import akka.pattern.Patterns;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
 
+import java.time.Duration;
 import java.util.concurrent.CompletionStage;
+import java.util.regex.Pattern;
 
 import static akka.http.javadsl.server.Directives.*;
 
@@ -42,7 +45,8 @@ public class AnonServer {
     }
 
     public CompletionStage<Response> Redirect(String url, int count){
-        
+        return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
+                
     }
 
     public CompletionStage<Response> Get(Request req){
