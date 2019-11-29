@@ -1,8 +1,12 @@
 package com.example.Laba;
 
 import akka.actor.ActorRef;
+import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.ZooKeeper;
 import org.asynchttpclient.AsyncHttpClient;
+
+import static akka.http.javadsl.server.Directives.get;
+import static akka.http.javadsl.server.Directives.route;
 
 public class AnonServer {
     AsyncHttpClient http;
@@ -15,5 +19,12 @@ public class AnonServer {
         this.zoo = zoo;
     }
 
-
+    public Route createRoute(){
+        return route(
+                get(() ->
+                        parametr("url", url ->
+                                )
+                        )
+        )
+    }
 }
