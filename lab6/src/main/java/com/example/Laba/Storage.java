@@ -31,6 +31,7 @@ public class Storage extends AbstractActor {
                 .match(DeleteMessage.class, m->{
 
                 })
+                .build();
 
     }
 }
