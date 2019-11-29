@@ -32,5 +32,6 @@ public class App {
         handler.createServer("localhost" + port, host, port);
 
         AnonServer server = new AnonServer(storage, httpClient, zoo);
+        
     }
 }
