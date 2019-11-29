@@ -15,6 +15,7 @@ public class Storage extends AbstractActor {
 
     @Override
     public Receive createReceive(){
+        return receiveBuilder()
 
     }
 }
