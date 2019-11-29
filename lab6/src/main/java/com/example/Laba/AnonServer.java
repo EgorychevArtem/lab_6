@@ -19,7 +19,7 @@ import static akka.http.javadsl.server.Directives.*;
 public class AnonServer {
     static AsyncHttpClient http;
     static ActorRef storage;
-    ZooKeeper zoo;
+    static ZooKeeper zoo;
 
     public AnonServer(ActorRef storage, AsyncHttpClient httpClient, ZooKeeper zoo) {
         this.http = httpClient;
