@@ -51,7 +51,8 @@ public class App {
         System.in.read();
 
         httpClient.close();
-       // Handler.removeAllWatches();
+        Handler.removeAllWatches();
+        //zoo.removeAllWatches();
         zoo.close();
         binding
                 .thenCompose(ServerBinding::unbind)
