@@ -9,6 +9,7 @@ import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Request;
 import org.asynchttpclient.Response;
 
+import java.net.ConnectException;
 import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 import java.util.regex.Pattern;
@@ -59,7 +60,11 @@ public class AnonServer {
                         e.printStackTrace();
                     }
                 })
-                .handle((re))
+                .handle( (result, ex) -> {
+                    if (ex instanceof ConnectException){
+                        storage.tell(new DeleteMessage(z), ActorRef.noSender());
+                    }
+                })
 
     }
 
