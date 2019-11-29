@@ -25,6 +25,6 @@ public class Handler {
                 (host + ":" + port).getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL);
-        
+        log.info();
     }
 }
