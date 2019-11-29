@@ -15,7 +15,7 @@ public class Storage {
     }
 
     @Override
-    public Receive createReceive(){
+    public AbstractActor.Receive createReceive(){
 
     }
 }
