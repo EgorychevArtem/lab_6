@@ -64,7 +64,9 @@ public class AnonServer {
     private Response getServUrl(String znode) {
         try {
             return new String(zoo.getData(znode, false, null));
-        } catch ()
+        } catch (KeeperException | InterruptedException e){
+            
+        }
     }
 
     public CompletionStage<Response> Get(Request req){
