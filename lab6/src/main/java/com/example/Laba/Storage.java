@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
+
 public class Storage extends AbstractActor {
     static final Logger log = Logger.getLogger(Storage.class.getName());
     Random random = new Random();
@@ -26,6 +28,7 @@ public class Storage extends AbstractActor {
                 .match(GetRandomMessage.class, m ->{
                     getSender().tell(
                             new ReturnMessage(storage.get(random.nextInt(storage.size()))),
+                            ActorRef.noSender()
                     );
                 })
                 .match(DeleteMessage.class, m->{
@@ -33,6 +36,5 @@ public class Storage extends AbstractActor {
                     this.storage.remove(m.server);
                 })
                 .build();
-
     }
 }
