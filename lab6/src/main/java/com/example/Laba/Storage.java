@@ -28,6 +28,9 @@ public class Storage extends AbstractActor {
                             new ReturnMessage(storage.get(random.nextInt(storage.size()))),
                     );
                 })
+                .match(DeleteMessage.class, m->{
+
+                })
 
     }
 }
