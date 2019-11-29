@@ -13,4 +13,7 @@ public class Handler {
         this.storage = storage;
         this.path = path;
     }
+
+    public void createServer(String s, String host, int port) {
+    }
 }
