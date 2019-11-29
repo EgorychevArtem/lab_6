@@ -23,7 +23,9 @@ public class Storage extends AbstractActor {
                     this.storage.clear();
                     this.storage.addAll(m.servers);
                 })
-                .match()
+                .match(GetRandomMessage.class, m ->{
+                    
+                })
 
     }
 }
