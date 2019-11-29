@@ -19,6 +19,7 @@ public class Storage extends AbstractActor {
     public Receive createReceive(){
         return receiveBuilder()
                 .match(PutMessage.class, m ->{
+                    log.info("Received servers: " + m.servers.toString());
                     this.storage.clear();
                     this.storage.addAll(m.servers);
                 })
