@@ -43,6 +43,7 @@ public class AnonServer {
         } else{
             result = Redirect(url, count--);
         }
+        return completeOKWithFutureString(result.thenApply(Response::getResponseBody))
     }
 
     public CompletionStage<Response> Redirect(String url, int count){
@@ -58,7 +59,7 @@ public class AnonServer {
                         e.printStackTrace();
                     }
                 })
-                .
+                .handle((re))
 
     }
 
