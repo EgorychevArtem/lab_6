@@ -48,7 +48,8 @@ public class AnonServer {
         return Patterns.ask(storage, new GetRandomMessage(), Duration.ofSeconds(3))
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
-                        Get())
+                        Get(createServerRequest(new String(zoo.getData(z,false,null)), url, count)))
+                
     }
 
     public CompletionStage<Response> Get(Request req){
