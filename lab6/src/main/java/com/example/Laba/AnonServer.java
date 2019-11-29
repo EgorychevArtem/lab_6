@@ -36,9 +36,14 @@ public class AnonServer {
         CompletionStage<Response> result;
         if (count == 0){
             result = Get(http.prepareGet(url).build());
+        } else{
+            result = Redirect();
         }
     }
 
+    public CompletionStage<Response> Redirect(){
+        
+    }
 
     public CompletionStage<Response> Get(Request req){
         return http.executeRequest(req).toCompletableFuture();
