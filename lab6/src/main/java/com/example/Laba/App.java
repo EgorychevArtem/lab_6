@@ -23,7 +23,8 @@ import static org.asynchttpclient.Dsl.asyncHttpClient;
 
 public class App {
     static Logger log = Logger.getLogger(App.class.getName());
-
+    private static String CONNECTION = "127.0.0.1:2181";
+    private static String STRINGPATH = "/servers";
     public static void main(String[] args) throws Exception {
         if (args.length != 2) {
             System.err.println("Usage: Anonymizer <host> <port>");
@@ -31,7 +32,7 @@ public class App {
         }
         String host = args[0];
         int port = Integer.parseInt(args[1]);
-        final ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, e -> log.info(e.toString()));
+        final ZooKeeper zoo = new ZooKeeper(CONNECTION, 3000, e -> log.info(e.toString()));
         ActorSystem system = ActorSystem.create("routes");
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
@@ -39,7 +40,7 @@ public class App {
 
         ActorRef storage = system.actorOf(Props.create(Storage.class));
 
-        Handler handler = new Handler(zoo, storage, "/servers");
+        Handler handler = new Handler(zoo, storage, STRINGPATH);
         handler.createServer("localhost" + port, host, port);
 
         AnonServer server = new AnonServer(storage, httpClient, zoo);
