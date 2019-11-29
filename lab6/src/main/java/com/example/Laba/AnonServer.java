@@ -52,11 +52,7 @@ public class AnonServer {
                 .thenApply(o -> ((ReturnMessage)o).server)
                 .thenCompose(z ->
                         Get(createServerRequest(getServUrl(z), url, count))
-                        )
-                .handle( (result, ex) -> {
-                    if (ex instanceof ConnectException){
-                        storage.tell(new DeleteMessage(z), ActorRef.noSender());
-                    }
+                .handle())
                 })
 
     }
