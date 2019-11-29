@@ -50,8 +50,8 @@ public class App {
         System.out.println("Press RETURN to stop...");
         System.in.read();
 
-        asyncHttpClient.close();
-        serversHandler.removeAllWatches();
+        httpClient.close();
+       // Handler.removeAllWatches();
         zoo.close();
         binding
                 .thenCompose(ServerBinding::unbind)
