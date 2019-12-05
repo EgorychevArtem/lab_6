@@ -31,9 +31,9 @@ public class Handler {
         }
     }
 
-    /*public static void removeAllWatches() throws Exception {
+    public static void removeAllWatches() throws Exception {
         zoo.removeAllWatches(path, Watcher.WatcherType.Any, true);
-    }*/
+    }
 
     public void createServer(String name, String host, int port) throws Exception{
         String Serverpath = zoo.create(
