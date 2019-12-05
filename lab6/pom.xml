@@ -20,7 +20,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>study.zookeeper.lab6.Main</mainClass>
+                    <mainClass>com.example.Laba.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
