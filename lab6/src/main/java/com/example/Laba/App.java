@@ -25,6 +25,7 @@ public class App {
     static Logger log = Logger.getLogger(App.class.getName());
     private static String CONNECTION = "127.0.0.1:2181";
     private static String STRINGPATH = "/servers";
+    private static String LOCALHOST = "localhost";
     public static void main(String[] args) throws Exception {
         if (args.length != 2) {
             System.err.println("Usage: Anonymizer <host> <port>");
