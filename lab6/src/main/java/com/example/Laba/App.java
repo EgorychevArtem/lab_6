@@ -34,7 +34,6 @@ public class App {
         int port = Integer.parseInt(args[1]);
         final ZooKeeper zoo = new ZooKeeper(CONNECTION, 3000, e -> log.info(e.toString()));
         ActorSystem system = ActorSystem.create("routes");
-        
         final Http http = Http.get(system);
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         AsyncHttpClient httpClient = asyncHttpClient();
