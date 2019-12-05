@@ -11,11 +11,11 @@ import akka.actor.ActorRef;
 public class Storage extends AbstractActor {
     static final Logger log = Logger.getLogger(Storage.class.getName());
     Random random = new Random();
-    List<String> storage;
+    List<String> storage = new ArrayList<>();
 
-    Storage(){
-        this.storage = new ArrayList<>();
-    }
+    //Storage(){
+     //   this.storage = new ArrayList<>();
+    //}
 
     @Override
     public Receive createReceive(){
