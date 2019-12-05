@@ -27,10 +27,6 @@ public class App {
     private static String STRINGPATH = "/servers";
     private static String LOCALHOST = "localhost";
     public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println("Usage: Anonymizer <host> <port>");
-            System.exit(-1);
-        }
         String host = args[0];
         int port = Integer.parseInt(args[1]);
         final ZooKeeper zoo = new ZooKeeper(CONNECTION, 3000, e -> log.info(e.toString()));
