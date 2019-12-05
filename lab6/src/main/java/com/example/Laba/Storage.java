@@ -13,10 +13,6 @@ public class Storage extends AbstractActor {
     Random random = new Random();
     List<String> storage = new ArrayList<>();
 
-    //Storage(){
-     //   this.storage = new ArrayList<>();
-    //}
-
     @Override
     public Receive createReceive(){
         return receiveBuilder()
