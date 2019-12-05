@@ -42,7 +42,7 @@ public class App {
         ActorRef storage = system.actorOf(Props.create(Storage.class));
 
         Handler handler = new Handler(zoo, storage, STRINGPATH);
-        handler.createServer("localhost" + port, host, port);
+        handler.createServer(LOCALHOST + port, host, port);
 
         AnonServer server = new AnonServer(storage, httpClient, zoo);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = server.createRoute().flow(system, materializer);
